@@ -1,0 +1,6 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+set term=ansi
+set ts=2
+color candy

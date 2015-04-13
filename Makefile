@@ -31,6 +31,9 @@ nodedev-image: base-image
 bespoke-image: nodedev-image
 	docker build -t "nlcgi/bespoke" images/nlcgi-bespoke/
 
+docker-prs-image: bespoke-image
+	docker build -t "nlcgi/docker-prs" images/nlcgi-docker-prs/
+
 jdk-image: base-image
 	docker build -t "nlcgi/jdk" images/nlcgi-jdk
 
@@ -57,6 +60,9 @@ nodedev: nodedev-image
 
 bespoke: bespoke-image
 	docker run -v /data:/data -p 8080:8080 --volumes-from shared-volume -it nlcgi/bespoke
+
+docker-prs: docker-prs-image
+	docker run -p 8080:8080 nlcgi/docker-prs
 
 jdk: jdk-image
 	docker run -v /data:/data -p 8080:8080 -it nlcgi/jdk
